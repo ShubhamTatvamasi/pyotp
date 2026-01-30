@@ -1,13 +1,13 @@
-# pyotp Flask Example
+# pyotp FastAPI Example
 
 
-This is a minimal Flask app demonstrating [pyotp](https://pyauth.github.io/pyotp/) integration for Time-based One-Time Passwords (TOTP), with a full login experience using QR code and OTP.
+This is a minimal FastAPI app demonstrating [pyotp](https://pyauth.github.io/pyotp/) integration for Time-based One-Time Passwords (TOTP), with a full login experience using a QR code and OTP.
 
 
 ## Features
-- Scan QR code in authenticator app (Google Authenticator, Authy, etc)
-- Enter OTP to login
-- API endpoints for secret, OTP, and verification
+- Scan QR code in authenticator app (Google Authenticator, Authy, etc) ✅
+- Enter OTP to login ✅
+- API endpoints for secret, OTP, and verification ✅
 
 
 ## Endpoints
@@ -28,13 +28,12 @@ docker build -t pyotp-demo .
 docker run --rm -p 3000:3000 pyotp-demo
 ```
 
-Or run locally with Python:
+Or run locally with Python and uvicorn:
 
 ```bash
 pip install -r requirements.txt
-python app.py
+uvicorn app:app --host 0.0.0.0 --port 3000
 ```
-
 
 ## Example Usage
 
@@ -58,6 +57,13 @@ python app.py
           http://localhost:3000/verify-otp
      ```
 
----
+## API Docs
 
-**Note:** This is a demo. In production, generate and store a unique secret per user.
+FastAPI generates API documentation automatically from your code. When the server is running, open the following in your browser:
+
+- **Swagger UI (interactive)**: `http://localhost:3000/docs` ✅
+- **Redoc (read-only)**: `http://localhost:3000/redoc` ✅
+- **OpenAPI JSON**: `http://localhost:3000/openapi.json`
+
+These docs reflect your Pydantic models, `response_model` annotations, example values, and endpoint descriptions. To hide or move these endpoints in production, create the app with `FastAPI(docs_url=None, redoc_url=None, openapi_url=None)` or set custom paths.
+

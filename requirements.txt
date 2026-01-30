@@ -1,4 +1,6 @@
-flask
+fastapi
+uvicorn[standard]
 pyotp
 qrcode
 pillow
+python-multipart
